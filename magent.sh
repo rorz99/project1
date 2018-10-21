@@ -1,11 +1,19 @@
 #!/bin/bash
 if (( $# < 2 )); then
+<<<<<<< HEAD
 echo sample：$0 server aaaaaaaaaaaaa@bbc.com desc
+=======
+echo sample：$0 server abc@abc.com desc
+>>>>>>> origin
    exit -1
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 export SSH_AGENT_PID=`ps -fe |awk '!/awk/&&/ssh-agent/&&/'$USER'/ {print $2}'`
 Server=$1
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin
 Mail=$2
 LOG=~/ping.log
 b=0    #初始赋值为0，刚启动脚本时测试到网络正常则不提示，解决每次启动脚本时都提示网络正常的问题(设置为其他值则每次启动脚本时都提示)。
@@ -25,7 +33,11 @@ while [ true ]
 				cc=$P
 				sleep 20 && ssh cn@c000 "sudo -u wprod /usr/local/bin/su_web xautolog $Server" 
 				#/home/cn052942/checkagent.sh p
+<<<<<<< HEAD
 				dd="/home/db2inst1/checksession.db2 ismcache xxdba xxxxxxxxxx"
+=======
+				dd="/home/db2inst1/checksession.db2 ismdb caspdba 1111"
+>>>>>>> origin
 				ee="-------------`date +%Z_%Y/%m/%d_%H:%M:%S`---------------------------"
 				echo -e "$aa" "\n" "$bb" "\n" "$cc" "\n" "$dd" "\n" "$ee" |mail -s "$3 $Server : Network interrupt!!" $Mail
                                 #sed -n "/${Datetime1}/,/^中断/p" $LOG |mail -s "警报警报：网络中断！！" $Mail    
